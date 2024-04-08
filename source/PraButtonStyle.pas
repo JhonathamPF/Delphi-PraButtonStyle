@@ -36,6 +36,7 @@ interface
 uses
   Vcl.Graphics,
   Vcl.buttons,
+  Vcl.ImgList,
   System.SysUtils,
   System.Classes,
   System.UITypes,
@@ -129,7 +130,7 @@ type
     FTemplateStyle: TTemplateStyle;
     FPictureLayout: TPictureLayout;
 
-    FImageList: TImageList;
+    FImageList: TCustomImageList;
     FImageIndexPicture: Integer;
     FImageIndexPictureFocused: Integer;
     FImageIndexPictureDisabled: Integer;
@@ -246,7 +247,7 @@ type
     function IsPictureLayout: Boolean;
     procedure SetPictureLayout(const Value: TPictureLayout);
 
-    procedure SetImageList(const Value: TImageList);
+    procedure SetImageList(const Value: TCustomImageList);
     procedure SetImageIndexPicture(const Value: Integer);
     procedure SetImageIndexPictureFocused(const Value: Integer);
     procedure SetImageIndexPictureDisabled(const Value: Integer);
@@ -342,7 +343,7 @@ type
     property TemplateStyle: TTemplateStyle read FTemplateStyle write SetTemplateStyle stored IsStoredTemplateStyle default tsNone;
     property PictureLayout: TPictureLayout read FPictureLayout write SetPictureLayout stored IsPictureLayout default plGraphicCenter;
 
-    property ImageList: TImageList read FImageList write SetImageList;
+    property ImageList: TCustomImageList read FImageList write SetImageList;
 
     property ImageIndexPicture: Integer read FImageIndexPicture write SetImageIndexPicture stored IsImageIndexPicture default -1;
     property ImageIndexPictureFocused: Integer read FImageIndexPictureFocused write SetImageIndexPictureFocused stored IsImageIndexPictureFocused default -1;
@@ -1264,7 +1265,7 @@ begin
   end;
 end;
 
-procedure TPraButtonStyle.SetImageList(const Value: TImageList);
+procedure TPraButtonStyle.SetImageList(const Value: TCustomImageList);
 begin
   if FImageList <> Value then
   begin
